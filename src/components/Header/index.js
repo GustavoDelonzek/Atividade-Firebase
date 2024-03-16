@@ -39,17 +39,35 @@ function Header() {
         checkLogin();
     }, [])
 
+    async function fazerLogout() {
+        await signOut(auth)
+        setUser(false);
+        setUserDetail({});
+      }
+
     return (
-        <nav className="nav navbar-expand-lg border-bottom">
-            <div className='container-fluid'>
-                <Link to='/' className='navbar-brand' href='#'>
-                    <img src={imagelogo} alt='logo' width='44' className='d-inline-block align-text-center'></img>
+        <nav className="nav navbar-expand  bg-header p-1">
+            <div className='container-fluid text-start d-flex align-items-center'>
+                <Link to='/' className='navbar-brand logo-texto' href='#'>
+                    <img src={imagelogo} alt='logo' className='d-inline-block align-text-center logo-imagem'></img>
                     MyTasks
                 </Link>
             </div>
-            <div className='container-fluid text-end'>
-                <Link className='btn btn-primary m-1' to="/login">Cadastrar</Link>
-                <Link className='btn btn-warning m-1' to="/login">Login</Link>
+            <div className={`container-fluid  text-end ${user ? 'dropdown' : ''}`}>
+                { user?(
+                    <>
+                    <button className='btn bg-botao dropdown-toggle m-2' type='button' data-bs-toggle='dropdown' aria-expanded="false">{userDetail.email}</button>
+                    <ul className='dropdown-menu'>
+                        <li><button onClick={fazerLogout} className='dropdown-item'>Sair</button></li>
+                    </ul>
+                    </>
+                ) : (
+                    <>
+                    <Link className='btn bg-botao m-2' to="/login">Cadastrar</Link>
+                    <Link className='btn bg-botao m-2' to="/login">Login</Link>
+                    </>
+                )}
+                
             </div>
         </nav>
 

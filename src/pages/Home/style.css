@@ -1,3 +1,46 @@
-li{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
     list-style: none;
+}
+
+.introducao {
+    min-height: 80vh;
+    max-height: 100vh;
+    background-color: #91C8E4;
+}
+
+.titulo-principal {
+    color: #F6F4EB;
+    font-size: 44px;
+    font-weight: 700;
+}
+
+.texto-principal {
+    color: #F6F4EB;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.tarefas-container {
+    background-color: #F6F4EB;
+}
+
+.titulo-tarefas {
+    color: #4682A9;
+    font-weight: 700;
+}
+
+.bg-azulzinho {
+    background-color: rgb(145, 200, 228);
+    color: #F6F4EB;
+}
+
+.bg-azulzinho:hover {
+    background-color: rgb(77, 173, 221);
+    color: #F6F4EB;
 }

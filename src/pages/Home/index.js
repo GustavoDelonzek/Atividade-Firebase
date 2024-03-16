@@ -25,6 +25,9 @@ import {
   signOut,
   onAuthStateChanged
 } from 'firebase/auth';
+
+import imagemHome from "../../assets/images/Studying-amico.svg"
+
 // Função principal do componente React, que será renderizada na página.
 function Home() {
   // Estado para armazenar o título do post.
@@ -61,11 +64,12 @@ function Home() {
 
   async function handleAdd() {
     await addDoc(collection(db, "tarefas"), {
-      Titulo: titulo
+      Titulo: auxiliarTitulo
     })
       .then(() => {
         console.log("CADASTRADO COM SUCESSO")
         setTitulo('');
+        setAuxiliarTitulo('');
       })
       .catch((error) => {
         console.log("ERRO " + error);
@@ -116,36 +120,39 @@ function Home() {
 
   // Renderização do componente React.
   return (
-    <main>
-      <section>
-        <h1 className='text-center'>ReactJS + Firebase :</h1>
+    <main className='d-flex flex-column justify-content-center align-items-center'>
+      <section className='row introducao container-fluid p-2'>
+     
+      <div className='col-md-6 col-12 d-flex flex-column justify-content-center'>
+        <h1 className='titulo-principal text-center'>ReactJS+Firebase:</h1>
+        <p className='text-center texto-principal'>Integrando banco de dados noSQL para criação de um site de tarefas.</p>
+      </div>
+      <div className='col-md-6 col-12 d-flex justify-content-center'>
+        <img src={imagemHome} className='img-fluid'></img>
+      </div>
       </section>
-
-
-
-
-      <section className="container row">
-        <div className='col-6'>
-          <h2 className='text-start'>Tarefas</h2>
+      <section className='column container-fluid tarefas-container p-5'>
+        <div className='col-12 p-2 mb-4'>
+          <h2 className='text-center titulo-tarefas'>Suas Tarefas</h2>
         </div>
-
-
-      </section>
-      <section className='container'>
-// Lista de tarefass.
-        <div className='text-end'>
-          <button className='btn btn-success' onClick={handleAdd}>Cadastrar nova tarefa</button>
+        <div className='input-group container'>
+          <input className='form-control' aria-describedby="button-addon3" value={auxiliarTitulo} onChange={(e) => setAuxiliarTitulo(e.target.value)} type='text' placeholder="Ex: 'Varrer a casa...'"></input>
+          <button className='btn bg-azulzinho' id='button-addon3' onClick={handleAdd}>Cadastrar nova tarefa</button>
         </div>
-        <ul>
+      
+
+
+        <ul className='row pt-5 pe-5 ps-5'>
           {tarefas.map((tarefa) => {
             return (
-
-              <li key={tarefa.id}>
-                <span>Titulo: {tarefa.titulo} </span> <br />
-                <button className='btn btn-outline-danger' onClick={() => excluirTarefa(tarefa.id)}>Excluir</button>
-                <button type='button' className='btn btn-outline-primary' data-bs-toggle="collapse" href={`#collapse-titulo-${tarefa.id}`} role="button" aria-controls={`collapse-titulo-${tarefa.id}`} aria-expanded="false">Editar</button>
-
-                <div className={`collapse input-group `} role='button' id={`collapse-titulo-${tarefa.id}`}>
+              
+              <li className='col-lg-4 col-md-6 col-12 mb-3' key={tarefa.id}>
+                <div className='card'>
+                <div className='card-body text-center'>
+                <h4 className='card-title p-2'>{tarefa.titulo} </h4> 
+                <button className='btn btn-outline-danger btn-sm m-1' onClick={() => excluirTarefa(tarefa.id)}><i className='fa-solid fa-trash'></i></button>
+                <button type='button' className='btn bg-botao btn-sm m-1' data-bs-toggle="collapse" href={`#collapse-titulo-${tarefa.id}`} role="button" aria-controls={`collapse-titulo-${tarefa.id}`} aria-expanded="false"><i class="fa-solid fa-pen"></i></button>
+                <div className={`collapse input-group pt-2`} role='button' id={`collapse-titulo-${tarefa.id}`}>
                   <input
                     className='form-control'
                     type="text"
@@ -157,7 +164,10 @@ function Home() {
                   />
                   <button className="btn btn-outline-secondary" type="button" id="button-addon1" onClick={() => editarTarefas(tarefa.id)}>Confirmar</button>
                 </div>
+                </div>
+                </div>
 
+                
               </li>
 
 
@@ -166,7 +176,7 @@ function Home() {
         </ul>
 
       </section>
-
+      
 
     </main>
 

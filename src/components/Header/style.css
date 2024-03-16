@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.bg-header {
+    background-color: #F6F4EB;
+}
+
+.logo-texto {
+    color: #4682A9;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.logo-texto:hover {
+    color: #91C8E4;
+}
+
+.logo-imagem {
+    height: 48px;
+}
+
+.bg-botao {
+    border: rgb(145, 200, 228) 1px solid;
+    color: rgb(145, 200, 228);
+}
+
+.bg-botao:hover {
+    background-color: rgb(145, 200, 228);
+    color: #fff;
+}
+
+.bg-botao:focus {
+    background-color: rgb(145, 200, 228);
+    color: #fff;
+}

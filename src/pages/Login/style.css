@@ -1,0 +1,31 @@
+.main-login{
+    min-height: 100vh;
+    background: rgb(145,200,228);
+    background: linear-gradient(0deg, rgba(145,200,228,1) 0%, rgba(246,244,235,1) 100%);
+    color: #4682A9;
+}
+
+.container-login{
+    max-width: 40vw;
+    min-height: 60vh;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(255, 255, 255, 0.53);
+    padding: 25px;
+}
+@media(max-width: 600px){
+    .container-login{ 
+        max-width: 80vw;
+        min-height: 70vh;
+    }
+}
+@media (max-width: 860px){
+    .container-login{
+        max-width: 60vw;
+        min-height: 60vh;
+    }
+}
