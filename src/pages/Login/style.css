@@ -19,13 +19,13 @@
 }
 @media(max-width: 600px){
     .container-login{ 
-        max-width: 80vw;
-        min-height: 70vh;
+        max-width: 100vw;
+        min-height: 100%;
     }
 }
 @media (max-width: 860px){
     .container-login{
-        max-width: 60vw;
-        min-height: 60vh;
+        max-width: 100vw;
+        min-height: 100%;
     }
 }
