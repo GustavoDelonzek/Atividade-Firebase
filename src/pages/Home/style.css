@@ -38,9 +38,16 @@ li {
 .bg-azulzinho {
     background-color: rgb(145, 200, 228);
     color: #F6F4EB;
+
 }
 
 .bg-azulzinho:hover {
     background-color: rgb(77, 173, 221);
     color: #F6F4EB;
+}
+
+@media(max-width: 700px) {
+    .bg-azulzinho {
+        width: 100%;
+    }
 }
