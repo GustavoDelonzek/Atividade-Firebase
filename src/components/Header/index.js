@@ -62,10 +62,10 @@ function Header() {
                     </ul>
                     </>
                 ) : (
-                    <>
+                    <div className='d-flex flex-row justify-content-end'>
                     <Link className='btn bg-botao m-2' to="/login">Cadastrar</Link>
                     <Link className='btn bg-botao m-2' to="/login">Login</Link>
-                    </>
+                    </div>
                 )}
                 
             </div>

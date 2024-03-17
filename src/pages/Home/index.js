@@ -31,6 +31,7 @@ import imagemHome from "../../assets/images/Studying-amico.svg"
 // Função principal do componente React, que será renderizada na página.
 function Home() {
   // Estado para armazenar o título do post.
+  
   const [titulo, setTitulo] = useState('');
   const [idTarefa, setIdTarefa] = useState('');
   // Estado para armazenar o email e a senha do usuário.
@@ -63,17 +64,22 @@ function Home() {
   // Função para adicionar um novo post ao Firestore.
 
   async function handleAdd() {
-    await addDoc(collection(db, "tarefas"), {
-      Titulo: auxiliarTitulo
-    })
-      .then(() => {
-        console.log("CADASTRADO COM SUCESSO")
-        setTitulo('');
-        setAuxiliarTitulo('');
+    if(auxiliarTitulo !== ''){
+      await addDoc(collection(db, "tarefas"), {
+        Titulo: auxiliarTitulo
       })
-      .catch((error) => {
-        console.log("ERRO " + error);
-      })
+        .then(() => {
+          console.log("CADASTRADO COM SUCESSO")
+          setTitulo('');
+          setAuxiliarTitulo('');
+        })
+        .catch((error) => {
+          console.log("ERRO " + error);
+        })
+    } else{
+      alert('Você deve inserir algo para cadastrar nova tarefa.')
+    }
+    
   }
   // Função para buscar todos os posts do Firestore.
   async function buscarTarefas() {
